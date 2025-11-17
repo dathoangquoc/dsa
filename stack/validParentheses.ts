@@ -34,12 +34,12 @@ Constraints:
 */
 
 
-class Solution {
+class ValidParentheses {
     /**
      * @param {string} s
      * @return {boolean}
      */
-    isValid(s) {
+    isValid(s: string) {
         if (!s) {
             return false;
         }
@@ -76,11 +76,13 @@ class Solution {
     }
 }
 
-const s = new Solution();
-const case1 = "[]";
-const case2 = "([{}])";
-const case3 = "[(])";
+{
+    const s = new ValidParentheses();
+    const case1 = "[]";
+    const case2 = "([{}])";
+    const case3 = "[(])";
 
-console.log(s.isValid(case1));
-console.log(s.isValid(case2));
-console.log(s.isValid(case3));
+    console.log(s.isValid(case1));
+    console.log(s.isValid(case2));
+    console.log(s.isValid(case3));
+}
