@@ -1,4 +1,4 @@
-export default class Node {
+export class Node {
     data: any
     left: Node | null
     right: Node | null
@@ -10,7 +10,16 @@ export default class Node {
     }
 
     isLeaf(): boolean {
-        if (!this.left || !this.right) return true;
+        if (!this.left && !this.right) return true;
         return false;
     }
+}
+
+export function getSize(root: Node | null): number {
+    if (!root) return 0;
+
+    let left = getSize(root.left);
+    let right = getSize(root.right);
+
+    return left + right + 1
 }
