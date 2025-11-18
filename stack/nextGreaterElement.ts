@@ -16,6 +16,8 @@ Examples:
 */
 
 class NextGreaterElement {
+
+    // O(N^2) Time & O(1) Space
     nestedLoop(arr: number[]) {
         const result: number[] = new Array(arr.length);
         result.fill(-1);
@@ -29,6 +31,11 @@ class NextGreaterElement {
             }
         }
         return result;
+    }
+
+    // TODO: 
+    stack() {
+
     }
 }
 
