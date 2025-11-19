@@ -23,3 +23,12 @@ export function getSize(root: Node | null): number {
 
     return left + right + 1
 }
+
+export function findMax(root: Node | null): number {
+    if (root === null) return Number.MIN_VALUE;
+
+    const leftMax = findMax(root.left);
+    const rightMax = findMax(root.right);
+
+    return Math.max(root.data, leftMax, rightMax);
+}
