@@ -1,0 +1,53 @@
+/**
+ * Given an array arr[] of size n, the task is to return an equilibrium index (if any) or -1 if no equilibrium index exists. 
+ * The equilibrium index of an array is an index such that the sum of all elements at lower indexes 
+ * equals the sum of all elements at higher indexes.
+
+Note: When the index is at the start of the array, the left sum is 0, and when it's at the end, the right sum is 0.
+
+Examples:
+
+    Input: arr[] = [1, 2, 0, 3]
+    Output: 2
+    Explanation: The sum of left of index 2 is 1 + 2 = 3 and sum on right of index 2 is 3.
+
+    Input: arr[] = [1, 1, 1, 1]
+    Output: -1 
+    Explanation: There is no equilibrium index in the array.
+
+    Input: arr[] = [-7, 1, 5, 2, -4, 3, 0]
+    Output: 3
+    Explanation: The sum of left of index 3 is -7 + 1 + 5 = -1 and sum on right of index 3 is -4 + 3 + 0 = -1.
+*/
+
+class EquilibriumIndex {
+    prefixSuffixSum(arr: number[]): number {
+        let res = -1;
+        const prefixSum: number[] = [];
+        const suffixSum: number[] = [];
+
+        // precompute prefixSum
+        for (let i = 1; i < arr.length; i++) {
+            prefixSum[i] += arr[i]  
+        }
+
+        // precompute suffixSum
+        for (let i = arr.length - 2; i >= 0; i--) {
+            suffixSum[i] += arr[i];
+        }
+
+        let l = 0;
+        let r = arr.length - 1;
+        while (l < r) {
+            if (prefixSum[l] === suffixSum[r]) res = l + 1;
+        }
+
+        return res;
+    }
+}
+
+{
+    const s = new EquilibriumIndex();
+
+    console.log(s.prefixSuffixSum([1, 2, 0, 3])); // 2
+}
